@@ -25,3 +25,15 @@ extension RegisteredUserSeriousCondition on bool? {
     }
   }
 }
+
+extension GenderHelper on int? {
+  (String, Color) getGender() {
+    if (this == 1) {
+      return ("Male", Colors.teal);
+    } else if (this == 2) {
+      return ("Female", Colors.pinkAccent);
+    } else {
+      return ("Other", Colors.yellow);
+    }
+  }
+}

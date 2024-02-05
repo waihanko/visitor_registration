@@ -26,13 +26,14 @@ class VisitorDataVoAdapter extends TypeAdapter<VisitorDataVo> {
       isOnQuarantine: fields[7] as bool?,
       isContactWithCovidPerson: fields[8] as bool?,
       isSufferFlu: fields[10] as bool?,
+      gender: fields[11] as int?,
     );
   }
 
   @override
   void write(BinaryWriter writer, VisitorDataVo obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(10)
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
@@ -50,7 +51,9 @@ class VisitorDataVoAdapter extends TypeAdapter<VisitorDataVo> {
       ..writeByte(8)
       ..write(obj.isContactWithCovidPerson)
       ..writeByte(10)
-      ..write(obj.isSufferFlu);
+      ..write(obj.isSufferFlu)
+      ..writeByte(11)
+      ..write(obj.gender);
   }
 
   @override

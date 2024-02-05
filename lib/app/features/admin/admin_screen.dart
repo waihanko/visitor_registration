@@ -55,6 +55,15 @@ class _AdminScreenState extends State<AdminScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: AppDimens.marginSmall),
+                color: myHiveData[index].gender.getGender().$2,
+                child: PrimaryTextWidget(
+                  myHiveData[index].gender.getGender().$1,
+                  textSize: AppDimens.textMedium,
+                ),
+              ),
+              const SizedBox(height: AppDimens.marginSmall,),
               PrimaryTextWidget(
                 "${myHiveData[index].name} (${myHiveData[index].designation})",
                 textSize: AppDimens.textRegular2X,

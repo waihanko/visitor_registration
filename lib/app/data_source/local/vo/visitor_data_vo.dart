@@ -44,6 +44,10 @@ class VisitorDataVo {
   @HiveField(10)
   bool? isSufferFlu;
 
+  @JsonKey(name: 'gender')
+  @HiveField(11)
+  int? gender;
+
   VisitorDataVo({
     this.name,
     this.businessEmail,
@@ -53,6 +57,7 @@ class VisitorDataVo {
     this.nrc,
     this.isOnQuarantine,
     this.isContactWithCovidPerson,
-    this.isSufferFlu
+    this.isSufferFlu,
+    this.gender
   });
 }
