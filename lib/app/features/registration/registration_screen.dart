@@ -59,14 +59,21 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           textColor: AppColors.whiteColor,
         ),
         actions: [
-          IconButton(
-              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const AdminScreen(),
+          Row(
+            children: [
+              const PrimaryTextWidget("Records", textColor: AppColors.whiteColor,),
+              IconButton(
+                  onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const AdminScreen(),
+                        ),
+                      ),
+                  icon: const Icon(
+                    Icons.list,
+                    color: Colors.white,
                   )),
-              icon: const Icon(
-                Icons.list,
-                color: Colors.white,
-              ))
+            ],
+          )
         ],
       ),
       bottomNavigationBar: !Responsive.isDesktop(context)
@@ -98,15 +105,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     );
   }
 
-  Widget _getMobileView(){
+  Widget _getMobileView() {
     return Column(
       children: [
         RegistrationInputFormWidget(
             title: "* Name",
             inputEditingController: nameEditingController,
             textInputAction: TextInputAction.next,
-            onValidate: (value) =>
-                ValidationHelper.nameValidation(value)),
+            onValidate: (value) => ValidationHelper.nameValidation(value)),
         const SizedBox(
           height: AppDimens.marginLarge,
         ),
@@ -114,8 +120,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           title: "* Business Email",
           inputEditingController: businessEmailEditingController,
           textInputAction: TextInputAction.next,
-          onValidate: (value) =>
-              ValidationHelper.emailValidation(value),
+          onValidate: (value) => ValidationHelper.emailValidation(value),
         ),
         const SizedBox(
           height: AppDimens.marginLarge,
@@ -124,12 +129,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           title: "* Business number",
           inputEditingController: businessNumberEditingController,
           textInputAction: TextInputAction.next,
-          onValidate: (value) =>
-              ValidationHelper.nameValidation(value),
+          onValidate: (value) => ValidationHelper.nameValidation(value),
           textInputType: TextInputType.number,
-          textInputFormatter: [
-            FilteringTextInputFormatter.digitsOnly
-          ],
+          textInputFormatter: [FilteringTextInputFormatter.digitsOnly],
         ),
         const SizedBox(
           height: AppDimens.marginLarge,
@@ -138,8 +140,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           title: "* NRC/ FIN Number (Last 4 characters)",
           inputEditingController: nrcEditingController,
           textInputAction: TextInputAction.done,
-          onValidate: (value) =>
-              ValidationHelper.nrcValidation(value),
+          onValidate: (value) => ValidationHelper.nrcValidation(value),
         ),
         const SizedBox(
           height: AppDimens.marginLarge,
@@ -161,14 +162,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           height: AppDimens.marginLarge,
         ),
         Container(
-          padding:
-          const EdgeInsets.only(left: AppDimens.marginCardMedium),
+          padding: const EdgeInsets.only(left: AppDimens.marginCardMedium),
           decoration: const BoxDecoration(
               border: Border(
                   left: BorderSide(
-                    color: AppColors.primaryColor,
-                    width: 3.0,
-                  ))),
+            color: AppColors.primaryColor,
+            width: 3.0,
+          ))),
           child: GenderDropdownWidget(
               currentGender: gender,
               onGenderChanged: (value) {
@@ -182,7 +182,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         ),
         RegistrationRadioFormWidget(
           title:
-          "Are you currently under a Quarantine Order, Stay-Home Notice?",
+              "Are you currently under a Quarantine Order, Stay-Home Notice?",
           selectedValue: isInCurrentQuarantine,
           onChange: (value) {
             setState(() {
@@ -195,7 +195,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         ),
         RegistrationRadioFormWidget(
           title:
-          "Have you had close contact with a confirmed Covid-19 person in the past 14 Days?",
+              "Have you had close contact with a confirmed Covid-19 person in the past 14 Days?",
           selectedValue: isContactWithCovid19Person,
           onChange: (value) {
             setState(() {
@@ -239,8 +239,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             ),
             const Expanded(
                 child: PrimaryTextWidget(
-                  "By completing this online form, I acknowledge and contest to the collection, use, and disclosure of my personal data for security verification, access control and safety purpose",
-                ))
+              "By completing this online form, I acknowledge and contest to the collection, use, and disclosure of my personal data for security verification, access control and safety purpose",
+            ))
           ],
         )
       ],
@@ -266,11 +266,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             Expanded(
               child: RegistrationInputFormWidget(
                 title: "* Business Email",
-                inputEditingController:
-                businessEmailEditingController,
+                inputEditingController: businessEmailEditingController,
                 textInputAction: TextInputAction.next,
-                onValidate: (value) =>
-                    ValidationHelper.emailValidation(value),
+                onValidate: (value) => ValidationHelper.emailValidation(value),
               ),
             )
           ],
@@ -294,15 +292,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             Expanded(
               child: RegistrationInputFormWidget(
                 title: "* Business number",
-                inputEditingController:
-                businessNumberEditingController,
+                inputEditingController: businessNumberEditingController,
                 textInputAction: TextInputAction.next,
-                onValidate: (value) =>
-                    ValidationHelper.nameValidation(value),
+                onValidate: (value) => ValidationHelper.nameValidation(value),
                 textInputType: TextInputType.number,
-                textInputFormatter: [
-                  FilteringTextInputFormatter.digitsOnly
-                ],
+                textInputFormatter: [FilteringTextInputFormatter.digitsOnly],
               ),
             )
           ],
@@ -328,8 +322,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 title: "* NRC/ FIN Number (Last 4 characters)",
                 inputEditingController: nrcEditingController,
                 textInputAction: TextInputAction.done,
-                onValidate: (value) =>
-                    ValidationHelper.nrcValidation(value),
+                onValidate: (value) => ValidationHelper.nrcValidation(value),
               ),
             ),
           ],
@@ -341,16 +334,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           children: [
             Expanded(
               child: Container(
-                padding: const EdgeInsets.only(
-                    left: AppDimens.marginCardMedium),
-                margin: EdgeInsets.only(
-                    right: AppDimens.marginCardMedium),
+                padding:
+                    const EdgeInsets.only(left: AppDimens.marginCardMedium),
+                margin: EdgeInsets.only(right: AppDimens.marginCardMedium),
                 decoration: const BoxDecoration(
                     border: Border(
                         left: BorderSide(
-                          color: AppColors.primaryColor,
-                          width: 3.0,
-                        ))),
+                  color: AppColors.primaryColor,
+                  width: 3.0,
+                ))),
                 child: GenderDropdownWidget(
                     currentGender: gender,
                     onGenderChanged: (value) {
@@ -368,7 +360,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         ),
         RegistrationRadioFormWidget(
           title:
-          "Are you currently under a Quarantine Order, Stay-Home Notice?",
+              "Are you currently under a Quarantine Order, Stay-Home Notice?",
           selectedValue: isInCurrentQuarantine,
           onChange: (value) {
             setState(() {
@@ -381,7 +373,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         ),
         RegistrationRadioFormWidget(
           title:
-          "Have you had close contact with a confirmed Covid-19 person in the past 14 Days?",
+              "Have you had close contact with a confirmed Covid-19 person in the past 14 Days?",
           selectedValue: isContactWithCovid19Person,
           onChange: (value) {
             setState(() {
@@ -425,8 +417,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             ),
             const Expanded(
                 child: PrimaryTextWidget(
-                  "By completing this online form, I acknowledge and contest to the collection, use, and disclosure of my personal data for security verification, access control and safety purpose",
-                ))
+              "By completing this online form, I acknowledge and contest to the collection, use, and disclosure of my personal data for security verification, access control and safety purpose",
+            ))
           ],
         ),
         const SizedBox(
@@ -466,11 +458,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             Expanded(
               child: RegistrationInputFormWidget(
                 title: "* Business Email",
-                inputEditingController:
-                businessEmailEditingController,
+                inputEditingController: businessEmailEditingController,
                 textInputAction: TextInputAction.next,
-                onValidate: (value) =>
-                    ValidationHelper.emailValidation(value),
+                onValidate: (value) => ValidationHelper.emailValidation(value),
               ),
             )
           ],
@@ -494,15 +484,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             Expanded(
               child: RegistrationInputFormWidget(
                 title: "* Business number",
-                inputEditingController:
-                businessNumberEditingController,
+                inputEditingController: businessNumberEditingController,
                 textInputAction: TextInputAction.next,
-                onValidate: (value) =>
-                    ValidationHelper.nameValidation(value),
+                onValidate: (value) => ValidationHelper.nameValidation(value),
                 textInputType: TextInputType.number,
-                textInputFormatter: [
-                  FilteringTextInputFormatter.digitsOnly
-                ],
+                textInputFormatter: [FilteringTextInputFormatter.digitsOnly],
               ),
             )
           ],
@@ -528,8 +514,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 title: "* NRC/ FIN Number (Last 4 characters)",
                 inputEditingController: nrcEditingController,
                 textInputAction: TextInputAction.done,
-                onValidate: (value) =>
-                    ValidationHelper.nrcValidation(value),
+                onValidate: (value) => ValidationHelper.nrcValidation(value),
               ),
             )
           ],
@@ -541,16 +526,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           children: [
             Expanded(
               child: Container(
-                padding: const EdgeInsets.only(
-                    left: AppDimens.marginCardMedium),
-                margin: EdgeInsets.only(
-                    right: AppDimens.marginCardMedium),
+                padding:
+                    const EdgeInsets.only(left: AppDimens.marginCardMedium),
+                margin: EdgeInsets.only(right: AppDimens.marginCardMedium),
                 decoration: const BoxDecoration(
                     border: Border(
                         left: BorderSide(
-                          color: AppColors.primaryColor,
-                          width: 3.0,
-                        ))),
+                  color: AppColors.primaryColor,
+                  width: 3.0,
+                ))),
                 child: GenderDropdownWidget(
                     currentGender: gender,
                     onGenderChanged: (value) {
@@ -568,7 +552,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         ),
         RegistrationRadioFormWidget(
           title:
-          "Are you currently under a Quarantine Order, Stay-Home Notice?",
+              "Are you currently under a Quarantine Order, Stay-Home Notice?",
           selectedValue: isInCurrentQuarantine,
           onChange: (value) {
             setState(() {
@@ -581,7 +565,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         ),
         RegistrationRadioFormWidget(
           title:
-          "Have you had close contact with a confirmed Covid-19 person in the past 14 Days?",
+              "Have you had close contact with a confirmed Covid-19 person in the past 14 Days?",
           selectedValue: isContactWithCovid19Person,
           onChange: (value) {
             setState(() {
@@ -625,8 +609,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             ),
             const Expanded(
                 child: PrimaryTextWidget(
-                  "By completing this online form, I acknowledge and contest to the collection, use, and disclosure of my personal data for security verification, access control and safety purpose",
-                ))
+              "By completing this online form, I acknowledge and contest to the collection, use, and disclosure of my personal data for security verification, access control and safety purpose",
+            ))
           ],
         )
       ],
@@ -672,6 +656,4 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       });
     }
   }
-
-
 }
