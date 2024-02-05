@@ -65,7 +65,7 @@ class _AdminScreenState extends State<AdminScreen> {
               ),
               const SizedBox(height: AppDimens.marginSmall,),
               PrimaryTextWidget(
-                "${myHiveData[index].name} (${myHiveData[index].designation})",
+                "${myHiveData[index].name} | ${myHiveData[index].designation??"-"}",
                 textSize: AppDimens.textRegular2X,
               ),
               const SizedBox(
